@@ -84,6 +84,7 @@ const getters = {
     return bottom - relativeEndDelta - offsetBottomWithСoefficient
   },
   isGameOver (state, getters) {
+    if (!getters.leftFigureList.length) return false
     const { momentumLeft, momentumRight, bending } = getters
     return Math.abs(bending) > MAX_BENDING || Math.abs(momentumLeft - momentumRight) > MAX_SIDES_DIFFERENCE
   }
