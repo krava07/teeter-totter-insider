@@ -77,11 +77,10 @@ const getters = {
     const bendingHalfHeight = (bottom - top) / 2
     const offsetСoefficient = 1 - figure.offset / (TEETER_TOTTER_WIDTH / 2)
     const relativeEndDelta = bendingHalfHeight * offsetСoefficient
-    const offsetBottomWithСoefficient = figure.offsetBottom * offsetСoefficient
     if (bending >= 0) {
-      return top + relativeEndDelta - offsetBottomWithСoefficient
+      return top + relativeEndDelta - figure.offsetBottom
     }
-    return bottom - relativeEndDelta - offsetBottomWithСoefficient
+    return bottom - relativeEndDelta - figure.offsetBottom
   },
   isGameOver (state, getters) {
     if (!getters.leftFigureList.length) return false
@@ -124,10 +123,12 @@ const mutations = {
   MOVE_RIGHT (state) {
     if (state.isPaused || state.fallingFigureList[0].offset - 1 <= 0) return
     state.fallingFigureList[0].offset -= 1
+    state.fallingFigureList[0].offsetBottom = calculateFigureSwingOffsetBottom(state.leftFigureList, state.fallingFigureList[0])
   },
   MOVE_LEFT (state) {
     if (state.isPaused || state.fallingFigureList[0].offset + 1 > 5) return
     state.fallingFigureList[0].offset += 1
+    state.fallingFigureList[0].offsetBottom = calculateFigureSwingOffsetBottom(state.leftFigureList, state.fallingFigureList[0])
   },
   MOVE_Y (state) {
     if (state.isPaused) return
