@@ -25,11 +25,6 @@ export default {
   beforeUnmount () {
     window.removeEventListener('keydown', this.onKeyDown)
   },
-  data () {
-    return {
-      iterationCounter: 0
-    }
-  },
   computed: {
     ...mapGetters({
       fallingFigureList: 'fallingFigureList'
