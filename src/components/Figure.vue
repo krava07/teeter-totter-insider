@@ -81,22 +81,23 @@ export default {
   text-align: center;
   font-size: 0.7rem;
   bottom: 0;
+
+  &-circle {
+    background-color: $circle-color;
+    border-radius: 50%;
+  }
+
+  &-triangle {
+    width: 0;
+    height: 0;
+    line-height: 4rem;
+    border-style: solid;
+    border-color: transparent transparent $triangle-color transparent;
+  }
+
+  &-rectangle {
+    background-color: $rectangle-color;
+  }
 }
 
-.figure-circle {
-  background-color: $circle-color;
-  border-radius: 50%;
-}
-
-.figure-triangle {
-  width: 0;
-  height: 0;
-  line-height: 4rem;
-  border-style: solid;
-  border-color: transparent transparent $triangle-color transparent;
-}
-
-.figure-rectangle {
-  background-color: $rectangle-color;
-}
 </style>
